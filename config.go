@@ -3,7 +3,7 @@ package noteofcli
 import (
 	"errors"
 	"path/filepath"
-
+	
 	"github.com/donatj/appsettings"
 	"github.com/shibukawa/configdir"
 )

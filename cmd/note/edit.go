@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"strconv"
 	"strings"
 
 	noteofcli "github.com/NoteOf/noteof-cli"
@@ -38,11 +37,7 @@ func (p *EditCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{})
 		editor = strings.Join(fs.Args()[1:], " ")
 	}
 
-	i, err := strconv.ParseInt(fs.Args()[0], 10, 64)
-	if err != nil {
-		log.Fatal("invalid id")
-	}
-
+	i := fs.Arg(0)
 	n, err := p.api.GetNote(i)
 	if err != nil {
 		log.Fatal(err)
@@ -62,7 +57,7 @@ func (p *EditCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{})
 		return subcommands.ExitFailure
 	}
 
-	fmt.Println(n.NoteID, getTitleLine(n2.CurrentText.NoteTextValue))
+	fmt.Println(n.PublicID, getTitleLine(n2.CurrentText.NoteTextValue))
 
 	return subcommands.ExitSuccess
 }

@@ -4,8 +4,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"log"
-	"strconv"
 
 	sdk "github.com/NoteOf/sdk-go"
 	"github.com/google/subcommands"
@@ -36,20 +34,14 @@ func (p *DeleteCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{
 	}
 
 	for _, v := range fs.Args() {
-		i, err := strconv.ParseInt(v, 10, 64)
-		if err != nil {
-			log.Println(err)
-			return subcommands.ExitUsageError
-		}
-
-		deleted, err := p.api.DeleteNote(i)
+		deleted, err := p.api.DeleteNote(v)
 		if deleted && err == nil {
-			fmt.Println(i, "DELETED")
+			fmt.Println(v, "DELETED")
 		} else if err != nil {
-			fmt.Println(i, err)
+			fmt.Println(v, err)
 			hasError = true
 		} else {
-			fmt.Println(i, "NOT FOUND")
+			fmt.Println(v, "NOT FOUND")
 			hasError = true
 		}
 	}

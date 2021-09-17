@@ -32,11 +32,7 @@ func (p *GetCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{}) 
 		log.Fatal("Expects exactly one noteID argument")
 	}
 
-	i, err := strconv.ParseInt(fs.Args()[0], 10, 64)
-	if err != nil {
-		log.Fatal("invalid id")
-	}
-
+	i := fs.Arg(0)
 	n, err := p.api.GetNote(i)
 	if err != nil {
 		log.Fatal(err)

@@ -46,7 +46,7 @@ func (p *NewCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) s
 		return subcommands.ExitFailure
 	}
 
-	fmt.Println(n2.NoteID, getTitleLine(n2.CurrentText.NoteTextValue))
+	fmt.Println(n2.PublicID, getTitleLine(n2.CurrentText.NoteTextValue))
 
 	return subcommands.ExitSuccess
 }

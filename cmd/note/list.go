@@ -38,7 +38,8 @@ func (p *ListCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) 
 		if n.Archived && !p.archived {
 			continue
 		}
-		fmt.Println(n.NoteID, getTitleLine(n.CurrentText.NoteTextValue))
+
+		fmt.Fprintf(w, "%s\t%s", n.PublicID, getTitleLine(n.CurrentText.NoteTextValue))
 	}
 
 	return subcommands.ExitSuccess
