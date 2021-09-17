@@ -42,6 +42,7 @@ func (p *InitCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) 
 
 		tr, err := p.api.DoAuth(username, password, "noteof-cli")
 		if err != nil {
+			fmt.Println(err)
 			continue
 		}
 
