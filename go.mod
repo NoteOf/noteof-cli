@@ -1,6 +1,6 @@
 module github.com/NoteOf/noteof-cli
 
-go 1.13
+go 1.17
 
 require (
 	github.com/NoteOf/sdk-go v0.0.0-20210917215736-f3b95936a3f5
@@ -20,4 +20,14 @@ require (
 	golang.org/x/sys v0.0.0-20201207223542-d4d67f95c62d // indirect
 	golang.org/x/term v0.0.0-20201207232118-ee85cb95a76b // indirect
 	golang.org/x/text v0.3.7 // indirect
+)
+
+require (
+	github.com/aymerick/douceur v0.2.0 // indirect
+	github.com/chris-ramon/douceur v0.2.0 // indirect
+	github.com/danwakefield/fnmatch v0.0.0-20160403171240-cbb64ac3d964 // indirect
+	github.com/gorilla/css v1.0.0 // indirect
+	github.com/lucasb-eyer/go-colorful v1.0.3 // indirect
+	github.com/mattn/go-runewidth v0.0.9 // indirect
+	github.com/olekukonko/tablewriter v0.0.4 // indirect
 )
