@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 
 	sdk "github.com/NoteOf/sdk-go"
 	"github.com/charmbracelet/glamour"
@@ -16,6 +16,8 @@ import (
 
 type GetCmd struct {
 	api *sdk.AuthenticatedAPI
+
+	outputJson bool
 }
 
 func (*GetCmd) Name() string     { return "get" }
@@ -26,7 +28,10 @@ func (*GetCmd) Usage() string {
 `
 }
 
-func (p *GetCmd) SetFlags(f *flag.FlagSet) {}
+func (p *GetCmd) SetFlags(f *flag.FlagSet) {
+	f.BoolVar(&p.outputJson, "json", false, "output full note JSON")
+}
+
 func (p *GetCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
 	if fs.NArg() != 1 {
 		log.Fatal("Expects exactly one noteID argument")
@@ -36,6 +41,14 @@ func (p *GetCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{}) 
 	n, err := p.api.GetNote(i)
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	if p.outputJson {
+		enc := json.NewEncoder(os.Stdout)
+		enc.SetIndent("", "\t")
+		enc.Encode(n)
+
+		return subcommands.ExitSuccess
 	}
 
 	out := n.CurrentText.NoteTextValue
