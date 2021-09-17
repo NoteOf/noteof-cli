@@ -45,6 +45,10 @@ func main() {
 	delete := &DeleteCmd{api: aapi}
 	subcommands.Register(delete, "")
 	subcommands.Register(subcommands.Alias("rm", delete), "")
+
+	archive := &ArchiveCmd{api: aapi}
+	subcommands.Register(archive, "")
+
 	subcommands.Register(&NewCmd{editor, config, aapi}, "")
 	subcommands.Register(&EditCmd{editor, aapi}, "")
 
