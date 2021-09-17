@@ -5,7 +5,9 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 	"strings"
+	"text/tabwriter"
 
 	sdk "github.com/NoteOf/sdk-go"
 	"github.com/google/subcommands"
@@ -25,7 +27,7 @@ func (*ListCmd) Usage() string {
 }
 
 func (p *ListCmd) SetFlags(f *flag.FlagSet) {
-	f.BoolVar(&p.archived, "a", false, "include archived notes")
+	f.BoolVar(&p.archived, "a", false, "all -- include archived notes")
 }
 
 func (p *ListCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
@@ -34,13 +36,37 @@ func (p *ListCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) 
 		log.Fatal(err.Error())
 	}
 
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+
 	for _, n := range notes {
 		if n.Archived && !p.archived {
 			continue
 		}
 
 		fmt.Fprintf(w, "%s\t%s", n.PublicID, getTitleLine(n.CurrentText.NoteTextValue))
+
+		fmt.Fprint(w, "\t[")
+		if p.archived {
+			if n.Archived {
+				fmt.Fprint(w, "a")
+			} else {
+				fmt.Fprint(w, " ")
+			}
+		}
+
+		if n.Starred {
+			fmt.Fprint(w, "*")
+		} else {
+			fmt.Fprint(w, " ")
+		}
+		fmt.Fprint(w, "]")
+
+		fmt.Fprint(w, "\t", n.CurrentText.Created)
+
+		fmt.Fprintln(w)
 	}
+
+	w.Flush()
 
 	return subcommands.ExitSuccess
 }
