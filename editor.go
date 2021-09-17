@@ -40,6 +40,7 @@ func ExecEditor(editor, text string) ([]byte, error) {
 
 	args = append(args, tmpPath)
 
+	log.Println(parts[0], args)
 	cmd := exec.Command(parts[0], args...)
 	cmd.Env = os.Environ()
 
@@ -50,6 +51,8 @@ func ExecEditor(editor, text string) ([]byte, error) {
 	if err := cmd.Run(); err != nil {
 		log.Fatal(err)
 	}
+
+	log.Println()
 
 	body, err := ioutil.ReadFile(tmpPath)
 	if err != nil {
