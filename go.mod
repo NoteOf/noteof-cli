@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/NoteOf/sdk-go v0.0.0-20210917215736-f3b95936a3f5
 	github.com/alecthomas/chroma v0.10.0 // indirect
-	github.com/charmbracelet/glamour v0.4.0
+	github.com/charmbracelet/glamour v0.5.0
 	github.com/dlclark/regexp2 v1.4.0 // indirect
 	github.com/donatj/appsettings v0.5.1
 	github.com/google/subcommands v1.2.0
