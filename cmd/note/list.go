@@ -72,5 +72,20 @@ func (p *ListCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) 
 }
 
 func getTitleLine(s string) string {
-	return strings.Split(strings.TrimSpace(strings.TrimLeft(strings.TrimSpace(s), "#")), "\n")[0]
+	out := strings.Split(strings.TrimSpace(strings.TrimLeft(strings.TrimSpace(s), "#")), "\n")[0]
+	trimmed, didtrim := substr(out, 50)
+	if didtrim {
+		return trimmed + "..."
+	}
+
+	return trimmed
+}
+
+func substr(input string, length int) (string, bool) {
+	data := []rune(input)
+	if len(data) < length {
+		return input, false
+	}
+
+	return string(data[:length]), true
 }
