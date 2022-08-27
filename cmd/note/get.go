@@ -14,10 +14,18 @@ import (
 	"github.com/mattn/go-isatty"
 )
 
+type outputType string
+
+const (
+	outputJson   outputType = "json"
+	outputPlain  outputType = "plain"
+	outputPretty outputType = "pretty"
+)
+
 type GetCmd struct {
 	api *sdk.AuthenticatedAPI
 
-	outputJson bool
+	output outputType
 }
 
 func (*GetCmd) Name() string     { return "get" }
@@ -29,7 +37,25 @@ func (*GetCmd) Usage() string {
 }
 
 func (p *GetCmd) SetFlags(f *flag.FlagSet) {
-	f.BoolVar(&p.outputJson, "json", false, "output full note JSON")
+	p.output = outputPlain
+	if isatty.IsTerminal(os.Stdout.Fd()) {
+		p.output = outputPretty
+	}
+
+	f.Func("output", fmt.Sprintf(fmt.Sprintf("set the output format, options are: %s %s %s", outputPretty, outputPlain, outputPretty)), func(s string) error {
+		switch outputType(s) {
+		case outputJson:
+			p.output = outputJson
+		case outputPlain:
+			p.output = outputPlain
+		case outputPretty:
+			p.output = outputPretty
+		default:
+			return fmt.Errorf("invalid output type: %s", s)
+		}
+
+		return nil
+	})
 }
 
 func (p *GetCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
@@ -43,24 +69,21 @@ func (p *GetCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{}) 
 		log.Fatal(err)
 	}
 
-	if p.outputJson {
-		enc := json.NewEncoder(os.Stdout)
-		enc.SetIndent("", "\t")
-		enc.Encode(n)
-
-		return subcommands.ExitSuccess
-	}
-
-	out := n.CurrentText.NoteTextValue
-
-	if isatty.IsTerminal(os.Stdout.Fd()) {
-		out, err = glamour.Render(out, "notty")
+	switch p.output {
+	case outputPretty:
+		out, err := glamour.Render(n.CurrentText.NoteTextValue, "notty")
 		if err != nil {
 			fmt.Println(n.CurrentText.NoteTextValue)
 		}
-	}
 
-	fmt.Println(out)
+		fmt.Println(out)
+	case outputPlain:
+		fmt.Println(n.CurrentText.NoteTextValue)
+	case outputJson:
+		enc := json.NewEncoder(os.Stdout)
+		enc.SetIndent("", "\t")
+		enc.Encode(n)
+	}
 
 	return subcommands.ExitSuccess
 }
