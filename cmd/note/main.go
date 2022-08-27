@@ -51,7 +51,7 @@ func main() {
 	subcommands.Register(archive, "")
 
 	subcommands.Register(&NewCmd{editor, config, aapi}, "")
-	subcommands.Register(&EditCmd{editor, aapi}, "")
+	subcommands.Register(&EditCmd{editor: editor, api: aapi}, "")
 
 	flag.Parse()
 	ctx := context.Background()

@@ -14,6 +14,7 @@ import (
 
 type EditCmd struct {
 	editor string
+	append bool
 
 	api *sdk.AuthenticatedAPI
 }
@@ -26,7 +27,10 @@ func (*EditCmd) Usage() string {
 `
 }
 
-func (p *EditCmd) SetFlags(f *flag.FlagSet) {}
+func (p *EditCmd) SetFlags(f *flag.FlagSet) {
+	f.BoolVar(&p.append, "append", false, "append to the note")
+}
+
 func (p *EditCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
 	if fs.NArg() < 1 {
 		log.Fatal("Expects exactly one noteID argument")
@@ -43,13 +47,27 @@ func (p *EditCmd) Execute(_ context.Context, fs *flag.FlagSet, _ ...interface{})
 		log.Fatal(err)
 	}
 
-	body, err := noteofcli.Edit(editor, n.CurrentText.NoteTextValue)
+	startingText := ""
+	if !p.append {
+		startingText = n.CurrentText.NoteTextValue
+	}
+
+	body, err := noteofcli.Edit(editor, startingText)
 	if err != nil {
 		log.Println(err)
 		return subcommands.ExitFailure
 	}
 
-	n.CurrentText.NoteTextValue = string(body)
+	if p.append {
+		out := strings.TrimSuffix(n.CurrentText.NoteTextValue, "\n")
+		if out != "" {
+			out += "\n"
+		}
+
+		n.CurrentText.NoteTextValue = out + strings.TrimSuffix(string(body), "\n") + "\n"
+	} else {
+		n.CurrentText.NoteTextValue = string(body)
+	}
 
 	n2, err := p.api.PutUpdateNote(n)
 	if err != nil {
