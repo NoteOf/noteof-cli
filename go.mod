@@ -9,7 +9,7 @@ require (
 	github.com/dlclark/regexp2 v1.4.0 // indirect
 	github.com/donatj/appsettings v0.5.1
 	github.com/google/subcommands v1.2.0
-	github.com/mattn/go-isatty v0.0.14
+	github.com/mattn/go-isatty v0.0.16
 	github.com/microcosm-cc/bluemonday v1.0.17 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.9.0 // indirect
@@ -17,7 +17,7 @@ require (
 	github.com/yuin/goldmark v1.4.4 // indirect
 	golang.org/x/crypto v0.0.0-20201203163018-be400aefbc4c
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
-	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
 	golang.org/x/term v0.0.0-20201207232118-ee85cb95a76b // indirect
 	golang.org/x/text v0.3.7 // indirect
 )
