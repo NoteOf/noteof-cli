@@ -16,10 +16,10 @@ require (
 	github.com/shibukawa/configdir v0.0.0-20170330084843-e180dbdc8da0
 	github.com/yuin/goldmark v1.5.2 // indirect
 	golang.org/x/crypto v0.0.0-20201203163018-be400aefbc4c
-	golang.org/x/net v0.0.0-20221002022538-bcab6841153b // indirect
-	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
-	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
-	golang.org/x/text v0.3.8 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/term v0.5.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 )
 
 require (
