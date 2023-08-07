@@ -38,6 +38,9 @@ func (p *NewCmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) s
 		CurrentText: &sdk.NoteText{
 			NoteTextValue: string(body),
 		},
+		Meta: sdk.NoteMeta{
+			"created:with": "noteof-cli",
+		},
 	}
 
 	n2, err := p.api.PostNewNote(n)
