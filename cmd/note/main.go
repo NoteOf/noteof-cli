@@ -53,6 +53,8 @@ func main() {
 	subcommands.Register(&NewCmd{editor, config, aapi}, "")
 	subcommands.Register(&EditCmd{editor: editor, api: aapi}, "")
 
+	subcommands.Register(&MetaCmd{api: aapi}, "details")
+
 	flag.Parse()
 	ctx := context.Background()
 	os.Exit(int(subcommands.Execute(ctx)))
