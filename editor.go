@@ -2,7 +2,7 @@ package noteofcli
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 	"os/exec"
@@ -14,7 +14,7 @@ var wsre = regexp.MustCompile("\\s")
 func Edit(editor, text string) ([]byte, error) {
 	stat, _ := os.Stdin.Stat()
 	if (stat.Mode()&os.ModeCharDevice) == 0 || editor == "" {
-		return ioutil.ReadAll(os.Stdin)
+		return io.ReadAll(os.Stdin)
 	} else if editor != "" {
 		return ExecEditor(editor, text)
 	}
@@ -25,7 +25,7 @@ func Edit(editor, text string) ([]byte, error) {
 func ExecEditor(editor, text string) ([]byte, error) {
 	parts := wsre.Split(editor, -1)
 
-	tmpfile, err := ioutil.TempFile("", "post")
+	tmpfile, err := os.CreateTemp("", "post")
 	tmpfile.WriteString(text)
 	tmpPath := tmpfile.Name()
 	tmpfile.Close()
@@ -54,7 +54,7 @@ func ExecEditor(editor, text string) ([]byte, error) {
 
 	log.Println()
 
-	body, err := ioutil.ReadFile(tmpPath)
+	body, err := os.ReadFile(tmpPath)
 	if err != nil {
 		return []byte{}, err
 	}
