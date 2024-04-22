@@ -4,8 +4,7 @@ go 1.20
 
 require (
 	github.com/NoteOf/sdk-go v0.0.0-20230807200002-bd8d64ca460f
-	github.com/alecthomas/chroma v0.10.0 // indirect
-	github.com/charmbracelet/glamour v0.6.0
+	github.com/charmbracelet/glamour v0.7.0
 	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/donatj/appsettings v0.5.1
 	github.com/google/subcommands v1.2.0
@@ -23,6 +22,7 @@ require (
 )
 
 require (
+	github.com/alecthomas/chroma/v2 v2.8.0 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
