@@ -14,11 +14,11 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/shibukawa/configdir v0.0.0-20170330084843-e180dbdc8da0
 	github.com/yuin/goldmark v1.5.5 // indirect
-	golang.org/x/crypto v0.23.0
+	golang.org/x/crypto v0.31.0
 	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/sys v0.20.0 // indirect
-	golang.org/x/term v0.20.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/term v0.27.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 )
 
 require (
