@@ -5,7 +5,7 @@ go 1.24
 toolchain go1.24.1
 
 require (
-	github.com/NoteOf/sdk-go v0.0.0-20230807200002-bd8d64ca460f
+	github.com/NoteOf/sdk-go v0.1.0
 	github.com/charmbracelet/glamour v0.10.0
 	github.com/dlclark/regexp2 v1.11.0 // indirect
 	github.com/donatj/appsettings v0.6.0

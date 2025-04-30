@@ -1,5 +1,7 @@
 github.com/NoteOf/sdk-go v0.0.0-20230807200002-bd8d64ca460f h1:kooQVj8r9cKTN3pH45yC8MciQJJK1AL/bmI6AFlydn0=
 github.com/NoteOf/sdk-go v0.0.0-20230807200002-bd8d64ca460f/go.mod h1:5nWHxq43BliSDMLSl0sMVPwZDwWdU6qCWnvhljmKcLY=
+github.com/NoteOf/sdk-go v0.1.0 h1:wa+yRFMctWw9Zsgcz3G8s/AmzxdylWw2CEsEYOEotVA=
+github.com/NoteOf/sdk-go v0.1.0/go.mod h1:klUJS457fIn4jPhCMHul3vzOsvKgLFoma+WhcxIdfv4=
 github.com/alecthomas/assert/v2 v2.7.0 h1:QtqSACNS3tF7oasA8CU6A6sXZSBDqnm7RfpLl9bZqbE=
 github.com/alecthomas/assert/v2 v2.7.0/go.mod h1:Bze95FyfUr7x34QZrjL+XP+0qgp/zg8yS+TtBj1WA3k=
 github.com/alecthomas/chroma/v2 v2.14.0 h1:R3+wzpnUArGcQz7fCETQBzO5n9IMNi13iIs46aU4V9E=
