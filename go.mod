@@ -1,6 +1,8 @@
 module github.com/NoteOf/noteof-cli
 
-go 1.20
+go 1.24
+
+toolchain go1.24.1
 
 require (
 	github.com/NoteOf/sdk-go v0.0.0-20230807200002-bd8d64ca460f
