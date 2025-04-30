@@ -42,7 +42,7 @@ func (p *GetCmd) SetFlags(f *flag.FlagSet) {
 		p.output = outputPretty
 	}
 
-	f.Func("output", fmt.Sprintf(fmt.Sprintf("set the output format, options are: %s %s %s", outputPretty, outputPlain, outputPretty)), func(s string) error {
+	f.Func("output", fmt.Sprintf("set the output format, options are: %s %s %s", outputPretty, outputPlain, outputPretty), func(s string) error {
 		switch outputType(s) {
 		case outputJson:
 			p.output = outputJson
