@@ -5,7 +5,7 @@ go 1.24
 toolchain go1.24.1
 
 require (
-	github.com/NoteOf/sdk-go v0.1.0
+	github.com/NoteOf/sdk-go v0.2.0
 	github.com/charmbracelet/glamour v0.10.0
 	github.com/dlclark/regexp2 v1.11.0 // indirect
 	github.com/donatj/appsettings v0.6.0
@@ -20,7 +20,7 @@ require (
 	golang.org/x/net v0.38.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/term v0.32.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/text v0.26.0 // indirect
 )
 
 require (
