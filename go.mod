@@ -10,7 +10,7 @@ require (
 	github.com/dlclark/regexp2 v1.11.5 // indirect
 	github.com/donatj/appsettings v0.6.0
 	github.com/google/subcommands v1.2.0
-	github.com/mattn/go-isatty v0.0.20
+	github.com/mattn/go-isatty v0.0.21
 	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.16.0 // indirect
