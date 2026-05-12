@@ -1,11 +1,11 @@
 module github.com/NoteOf/noteof-cli
 
-go 1.26
+go 1.26.0
 
 toolchain go1.26.1
 
 require (
-	github.com/NoteOf/sdk-go v0.2.0
+	github.com/NoteOf/sdk-go v0.3.0
 	github.com/charmbracelet/glamour v1.0.0
 	github.com/dlclark/regexp2 v1.11.5 // indirect
 	github.com/donatj/appsettings v0.6.0
