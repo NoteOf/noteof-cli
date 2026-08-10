@@ -8,7 +8,7 @@ require (
 	github.com/NoteOf/sdk-go v0.3.0
 	github.com/charmbracelet/glamour v1.0.0
 	github.com/dlclark/regexp2 v1.11.5 // indirect
-	github.com/donatj/appsettings v0.6.0
+	github.com/donatj/appsettings v0.6.1
 	github.com/google/subcommands v1.2.0
 	github.com/mattn/go-isatty v0.0.24
 	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
