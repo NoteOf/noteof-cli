@@ -9,7 +9,7 @@ require (
 	github.com/google/subcommands v1.2.0
 	github.com/mattn/go-isatty v0.0.24
 	github.com/shibukawa/configdir v0.0.0-20170330084843-e180dbdc8da0
-	golang.org/x/crypto v0.58.0
+	golang.org/x/crypto v0.59.0
 )
 
 require (
@@ -33,8 +33,8 @@ require (
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	github.com/yuin/goldmark v1.7.13 // indirect
 	github.com/yuin/goldmark-emoji v1.0.6 // indirect
-	golang.org/x/net v0.60.0 // indirect
-	golang.org/x/sys v0.49.0 // indirect
-	golang.org/x/term v0.47.0 // indirect
-	golang.org/x/text v0.43.0 // indirect
+	golang.org/x/net v0.62.0 // indirect
+	golang.org/x/sys v0.50.0 // indirect
+	golang.org/x/term v0.48.0 // indirect
+	golang.org/x/text v0.44.0 // indirect
 )
