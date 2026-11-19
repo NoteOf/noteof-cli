@@ -8,7 +8,7 @@ require (
 	github.com/donatj/appsettings v0.6.1
 	github.com/google/subcommands v1.2.0
 	github.com/mattn/go-isatty v0.0.24
-	github.com/shibukawa/configdir v1.0.0
+	github.com/shibukawa/configdir v1.1.0
 	golang.org/x/crypto v0.59.0
 )
 
